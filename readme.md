@@ -81,7 +81,8 @@ message = {
 
 # La instrucción del modelo para analizar la imagen y obtener un texto alternativo.
 system_prompt = """Tu eres un revisor de articulos web que van a ser publicados. 
-Tu labor es ver las imágenes y proporcionar un texto alternativo (que se incluirá como atributo 'alt' para la etiqueta img) que describa su contenido. 
+Tu labor es ver las imágenes y proporcionar un texto alternativo (que se incluirá 
+como atributo 'alt' para la etiqueta img) que describa su contenido. 
 Responde en 150 caracteres o menos sin preámbulo"""
 
 
