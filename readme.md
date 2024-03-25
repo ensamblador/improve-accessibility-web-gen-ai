@@ -176,15 +176,19 @@ Al crear contenido en línea, podríamos escribir de manera poco accesible, util
 Afortunadamente puedes mejorar el análisis  modificando la instrucción de la llamada de API. Manteniendo la estructura anterior modifica la instrucción de forma: 
 
 ```python
-system_prompt = """Tu eres un revisor de articulos web que van a ser publicados, tu misión es ver las imágenes y leer el texto para encontrar contenido web no inclusivo para personas con discapacidad visual. A continuación te muestro algunos ejemplos:
+system_prompt = """Tu eres un revisor de articulos web que van a ser publicados, \
+    tu misión es ver las imágenes y leer el texto para encontrar contenido web no inclusivo \
+    para personas con discapacidad visual. A continuación te muestro algunos ejemplos:
 
 Ejemplo de escritura no inclusiva:
 Incorrecto: 'Como se puede ver en la imagen de arriba, el proceso inicia...' 
 Corrección: 'En el diagrama anterior, el proceso inicia...'
 
 Ejemplo de imagen no inclusiva:
-Incorrecto: (usando una imagen con colores rojo y verde) 'El color rojo representa un sistema alarmado, y el verde el sistema saludable'
-Correcto: (usando una imagen con colores rojo y amarillo y etiquetas de texto para cada color) 'Acá se muestra el sistema alarmado y el sistema saludable'
+Incorrecto: (usando una imagen con colores rojo y verde) 'El color rojo representa un \
+    sistema alarmado, y el verde el sistema saludable'
+Correcto: (usando una imagen con colores rojo y amarillo y etiquetas de texto para cada color) \
+    'Acá se muestra el sistema alarmado y el sistema saludable'
 """
 
 ```
