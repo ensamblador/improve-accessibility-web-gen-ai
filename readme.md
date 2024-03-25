@@ -161,8 +161,8 @@ Al crear contenido en línea, podríamos escribir de manera poco accesible, util
 | Incorrecto | Correcto | ¿Por que? |
 | --- | --- | --- |
 | En la imagen vemos | En el diagrama a continuación se muestra | No es inclusivo para personas que usan lectores de pantalla y no saben la ubicación de la imagen |
-| Colores confusos para daltonismo (ej: verde, rojo) | - Usar colores con diferente constraste (Ej: amarillo, rojo) <br/>- Etiquetas Textuales para quienes no ven los colores| No es inclusivo para daltónicos o ciegos |
-
+| Colores confusos para daltonismo (ej: verde, rojo) | Usar colores con diferente constraste (Ej: amarillo, rojo) <br/>Etiquetas Textuales para quienes no ven los colores| No es inclusivo para daltónicos o ciegos |
+| en el menú opciones, **haz click** en 'Opcion A' | en el menú opciones, **selecciona** la 'Opción A' | no todos usan mouse/trackpad para navegar en la interfaz
 
 Afortunadamente puedes mejorar el análisis  modificando la instrucción de la llamada de API. Manteniendo la estructura anterior modifica la instrucción de forma: 
 
@@ -198,6 +198,8 @@ Excelente análisis
 En este post, aprendiste cómo utilizar la IA Generativa en Amazon Bedrock para mejorar la accesibilidad e inclusión del contenido web, especialmente para personas con discapacidades visuales. Descubriste cómo generar descripciones alternativas precisas para imágenes, teniendo en cuenta el contexto del texto circundante, y cómo analizar el contenido para identificar y corregir elementos no inclusivos.
 
 Estas técnicas pueden ser útiles no solo para sitios web, sino también para cualquier contenido digital que contenga imágenes, como documentos, presentaciones o material de marketing. Además, el análisis de inclusión puede extenderse más allá de las discapacidades visuales, para considerar otros tipos de discapacidades y barreras de accesibilidad.
+
+Las capacidades multimodales de Claude 3 permiten combinar imágenes y texto como input del modelo, lo que abre un abanico de posibilidades. Algunas aplicaciones que podrían desarrollarse aprovechando esta funcionalidad incluyen herramientas de análisis de imágenes más avanzadas, donde Claude podría proporcionar descripciones detalladas y contextualizadas de lo que ve en las imágenes.
 
 Si deseas profundizar en estos temas, puedes consultar los siguientes recursos:
 
