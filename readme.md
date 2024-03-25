@@ -121,9 +121,11 @@ Para aprovechar el contexto agrega el texto previo y posterior a la imagen. En t
 
 ```python 
 
-previous_text = "En la imagen se muestra el uso de LLM para entender las imagenes dentro del texto y proveer buqueda más relevante en Bases de Datos Vectoriales."
+previous_text = "En la imagen se muestra el uso de LLM para entender las imagenes \
+    dentro del texto y proveer buqueda más relevante en Bases de Datos Vectoriales."
 
-following_text = "Ahora veamos el caso donde un usuario quiera encontrar documentos donde se muestra la invocación a bedrock"
+following_text = "Ahora veamos el caso donde un usuario quiera encontrar documentos \
+    donde se muestra la invocación a bedrock"
 
 
 message = {
@@ -146,7 +148,11 @@ message = {
 
 
 # Nueva instrucción: considerar contexto
-system_prompt = "Tu eres un revisor de articulos web que van a ser publicados, tu misión es ver las imágenes y leer el texto previo y posterior para proporcionar un texto alternativo (que se incluirá como atributo 'alt' para la etiqueta img) que describa su contenido. Considera el texto que viene antes y después de la imagen al momento de generar la descripción. Responde en 150 caracteres o menos sin preámbulo"
+system_prompt = """Tu eres un revisor de articulos web que van a ser publicados. 
+Tu labor es ver las imágenes y leer el texto previo y posterior para proporcionar un texto
+alternativo (que se incluirá como atributo 'alt' para la etiqueta img) que describa su 
+contenido. Considera el texto que viene antes y después de la imagen al momento de generar 
+la descripción. Responde en 150 caracteres o menos sin preámbulo"""
 
 ```
 
