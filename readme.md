@@ -148,6 +148,8 @@ print({"image":image_path, "alt_text":alt_text})
 ```
 >_Diagrama que muestra el flujo de trabajo de un servicio de reconocimiento de imágenes en la nube AWS, donde el usuario envía una imagen y recibe una descripción textual generada por un modelo_
 
+El codigo completo está en `get_alt_text.py` o en `01_analize_image.ipynb` para Jupyter Notebook 
+
 ## Análisis Contextualizado de la Imagen
 
 El contexto en el que se encuentra la imagen puede modificar el significado o la interpretación del texto alternativo. Por lo tanto, el texto alternativo debe ser descriptivo y proporcionar información relevante sobre el contenido y **la función de la imagen dentro del contexto específico en el que se encuentra**.
@@ -198,7 +200,9 @@ Observa que el resultado cambia, por el nuevo contexto:
 ```
 >_Diagrama que muestra el flujo de invocación de un modelo de lenguaje grande (LLM) en AWS Cloud para generar una descripción de una imagen, utilizada para búsquedas más relevantes en bases de datos vectoriales._
 
-## Bonus track: Revisar el contenido en busca de contenido no inclusivo
+El codigo completo está en `get_alt_text_context.py` o en `02_analize_image_context.ipynb` para Jupyter Notebook.
+
+## Análisis en busca de contenido no inclusivo
 
 Al crear contenido en línea, podríamos escribir de manera poco accesible, utilizando colores difíciles de distinguir para los daltónicos o haciendo referencia a posiciones en el texto que no son entendibles para todos. A continuación muestro algunos ejemplos:
 
@@ -241,6 +245,7 @@ Y el resultado del análisis:
 
 Este es un analisis acertado que puede ayudar a personas como discapacidad a entender mejoe. Haz tus pruebas, juega con el prompt encuentra la mejor instrucción.
 
+El codigo completo está en `analize_visual_inclusion.py` o en `03_analize_visual_inclusion.ipynb` para Jupyter Notebook.
 
 ## Conclusiones
 
