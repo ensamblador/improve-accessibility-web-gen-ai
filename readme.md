@@ -1,13 +1,13 @@
 # Potencie la accesibilidad e inclusión web con IA Generativa en Amazon Bedrock
 _Enrique Rodriguez, Senior Solutions Architect, Amazon Web Services_
 
-En el mundo digital actual, la accesibilidad es clave para garantizar una experiencia inclusiva para todos. Sin embargo, a menudo se pasa por alto la necesidad de considerar a las personas con discapacidades visuales. ¿Cómo podemos aprovechar la tecnología para hacer que nuestro contenido en línea sea más accesible? 
+En el mundo digital actual, la accesibilidad es clave para garantizar una experiencia inclusiva para todos. Sin embargo, a menudo se pasa por alto la necesidad de considerar a las personas con discapacidades visuales. Hoy es posible usar la tecnología para eliminar esta barrera y lograr que nuestro contenido en línea sea más accesible.
 
 En este post, explorarás cómo utilizar la IA Generativa en [Amazon Bedrock](https://aws.amazon.com/es/bedrock/) analizando imágenes y textos para mejorar la experiencia de quienes utilizan lectores de pantalla o tienen dificultades para procesar información visualmente.
 
 [Amazon Bedrock](https://aws.amazon.com/es/bedrock/) es un servicio totalmente administrado que ofrece una selección de modelos fundacionales de empresas líderes en IA y de Amazon a través de una única API, junto con un amplio conjunto de capacidades para crear aplicaciones de IA generativa con seguridad, privacidad e IA responsable. 
 
-Cabe destacar que Claude 3 (el modelo más avanzado de Anthropic) se encuentra disponible en Amazon Bedrock y ofrece capacidades multimodales que permiten analizar tanto imágenes como texto de manera simultánea. Puede Conocer más de Anthropic Claude 3 en este [Anuncio](https://aws.amazon.com/es/blogs/machine-learning/unlocking-innovation-aws-and-anthropic-push-the-boundaries-of-generative-ai-together/)
+Cabe destacar que [Claude 3](https://www.aboutamazon.com/news/aws/amazon-bedrock-anthropic-ai-claude-3) (el modelo más avanzado de Anthropic) se encuentra disponible en Amazon Bedrock y ofrece capacidades multimodales que permiten analizar tanto imágenes como texto de manera simultánea. Puede Conocer más de Anthropic Claude 3 en este [Anuncio](https://aws.amazon.com/es/blogs/machine-learning/unlocking-innovation-aws-and-anthropic-push-the-boundaries-of-generative-ai-together/)
 
 ## Introducción 
 
@@ -15,11 +15,14 @@ De acuerdo a los [lineamientos de accesibilidad del contenido web](https://www.w
 
 Si alguno de estos principios no se cumple, las personas con discapacidades no podrán utilizar la web en su totalidad.
 
-A continuación usarás diferentes técnicas para mejorar la accesibilidad del contenido web utilizando Modelos de Lenguaje Grandes (En adelante LLMs, por sus siglas en inglés).
+A continuación aprenderás el uso de diferentes técnicas para mejorar la accesibilidad del contenido web utilizando Modelos de Lenguaje Grandes (En adelante LLMs, por sus siglas en inglés).
 
 ## Descripción General
 
-En el siguiente diagrama se muestra en general como utilizarás el servicio Amazon Bedrock 
+En el siguiente diagrama se muestra en general como utilizarás el servicio Amazon Bedrock:
+
+1. La invocación de Amazon Bedrock utilizando imágenes e instrucciones se realiza a través de la API de AWS con la librería [boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/bedrock-runtime/client/invoke_model.html) (python) indicando el Modelo a utilizar (claude 3 - Sonnet).
+2. La respuesta de la invocación es la descripción de la imagen o cualquier elemento adicional que se solicita en la instrucción.
 
 ![diagrama muestra la invocación de Amazon Bedrock donde el usuario envía una imagen y recibe una descripción textual generada por un modelo](samples/sample_diagram.jpg)
 
@@ -38,7 +41,39 @@ Para ejecutar localmente esta guía, necesitarás los siguientes requisitos prev
 - [Python](https://www.python.org/downloads/) y [boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/quickstart.html)
 - [Acceso al modelo Anthropic Claude 3](https://docs.aws.amazon.com/bedrock/latest/userguide/model-access.html)
 
-Cabe destacar que este post no requiere despliegue de infraestructura.
+Cabe destacar que este post no requiere despliegue de infraestructura ya que puede ser ejecutado localmente (utilizando credenciales de [usuario IAM](https://docs.aws.amazon.com/es_es/IAM/latest/UserGuide/id_users.html)) ya sea, directamente como python script o a través de [Notebook Jupyter](https://jupyter.org/).
+
+### Clona el repositorio 
+
+En caso que tengas instalado [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) puedes ejecutar:
+
+```bash
+git clone <this repo>
+```
+
+### Crea y activa un ambiente virtual
+
+```bash
+cd <this repo>
+python3 -m venv .venv
+source .venv/bin/activate 
+```
+
+Para plataformas Windows `% .venv\Scripts\activate.bat`
+
+### Instala las dependencias
+
+```bash
+pip install -r requirements.txt
+```
+
+Listo! ya puedes continuar, ejecuta `test_bedrock.py` y deberás recibir el siguiente resultado: **Santiago**
+
+```bash
+❯ python test_bedrock.py
+Santiago
+```
+
 
 ## Análisis de Imagen con Anthropic Claude 3 en Amazon Bedrock
 
@@ -192,7 +227,7 @@ Correcto: (usando una imagen con colores rojo y amarillo y etiquetas de texto pa
 """
 
 ```
-(también cambia max_tokens:500 para recibir la recomendación completa)
+Nota: aumenta max_tokens (cantidad máxima de respuesta medida en tokens) para recibir la recomendación completa.
 
 Nota: Esta técnica se conoce como [Few Shot Prompting](https://www.promptingguide.ai/es/techniques/fewshot), que consiste en dar algunos ejemplos al modelo en la misma instrucción.
 
@@ -204,7 +239,8 @@ Y el resultado del análisis:
 
 >_La descripción "En la imagen de abajo se ve las diferentes alarmas del sistema" no es inclusiva para personas con discapacidad visual, ya que asume que el lector puede ver la imagen. Una descripción más inclusiva sería:<br/><br/>La imagen muestra dos círculos de colores, uno rojo y otro verde, que representan diferentes tipos de alarmas del sistema.<br/><br/> Sin embargo, no se proporcionan etiquetas de texto que indiquen qué significa cada color, lo cual dificultaría la comprensión para personas con discapacidad visual. Una mejor práctica sería incluir una leyenda o etiquetas de texto que describan el significado de cada color.'_
 
-Excelente análisis
+Este es un analisis acertado que puede ayudar a personas como discapacidad a entender mejoe. Haz tus pruebas, juega con el prompt encuentra la mejor instrucción.
+
 
 ## Conclusiones
 
@@ -216,10 +252,9 @@ Las capacidades multimodales de Claude 3 permiten combinar imágenes y texto com
 
 Si deseas profundizar en estos temas, puedes consultar los siguientes recursos:
 
-
 - [Las pautas de accesibilidad web (WCAG) de la W3C](https://www.w3.org/WAI/standards-guidelines/wcag/)
 - [Amazon Bedrock](https://aws.amazon.com/es/bedrock/developer-experience/) 
 - Si estas interesado en una actividad practica te recomendamos [Building with Amazon Bedrock and LangChain](https://catalog.workshops.aws/building-with-amazon-bedrock/en-US)
 - Revisa otras publicaciones de estos temas en el [Blog IA Generativa en AWS](https://aws.amazon.com/es/blogs/machine-learning/category/artificial-intelligence/generative-ai/)
 
-¿Tienes alguna pregunta o experiencia adicional sobre el uso de IA Generativa? Comparte tus comentarios a continuación.
+Exito en tu aplicación!
