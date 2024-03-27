@@ -210,7 +210,7 @@ Al crear contenido en línea, podríamos escribir de manera poco accesible, util
 | --- | --- | --- |
 | En la imagen vemos | En el diagrama a continuación se muestra | No es inclusivo para personas que usan lectores de pantalla y no saben la ubicación de la imagen |
 | Colores confusos para daltonismo (ej: verde, rojo) | Usar colores con diferente constraste (Ej: amarillo, rojo) <br/>Etiquetas Textuales para quienes no ven los colores| No es inclusivo para daltónicos o ciegos |
-| en el menú opciones, **haz click** en 'Opcion A' | en el menú opciones, **selecciona** la 'Opción A' | no todos usan mouse/trackpad para navegar en la interfaz
+| en el menú opciones, **haz click** en 'Opcion A' | en el menú opciones, **selecciona** la 'Opción A' | No siempre existe un mouse/trackpad para navegar en la interfaz
 
 Afortunadamente puedes mejorar el análisis  modificando la instrucción de la llamada de API. Manteniendo la estructura anterior modifica la instrucción de forma: 
 
